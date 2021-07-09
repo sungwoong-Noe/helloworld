@@ -1,0 +1,44 @@
+buildscript{
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    } //전역변수를 설정하겟다는 의미
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}       //플러그인 의존성관리 위한 설정
+
+//자바와 스프링을 사용하기 위한 플러그인 4가지
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    mavenCentral()
+}   //각종 의존성 라이브러리들을 어떤 원격 저장소에서 받을지를 정하는 코드
+
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies{
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}   //프로젝트 개발에 필요한 의존성들을 선언하는 코드
